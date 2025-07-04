@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Why Did You Click</title>
+  <style>
+    body {
+      background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGalaxy&psig=AOvVaw2pB-Ol4flLjNFDyP3IMtCf&ust=1751692990315000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKjDsYW7oo4DFQAAAAAdAAAAABAE');
+      background-size: cover;
+      background-position: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #ff00ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 15px 25px;
+      border: 4px dashed #00ff00;
+      background: linear-gradient(45deg, #ff0000, #00ffff, #ffff00, #ff00ff);
+      background-size: 600% 600%;
+      animation: chaos 5s ease infinite;
+      color: black;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      position: relative;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #ff00ff;
+    }
+
+    @keyframes chaos {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button id="mainButton">why would you click this link</button>
+    <button class="decoy">click me</button>
+    <button class="decoy">click me</button>
+    <button class="decoy">click me</button>
+  </div>
+
+  <script>
+    const mainButton = document.getElementById("mainButton");
+    const decoys = document.querySelectorAll(".decoy");
+
+    let clickCount = 0;
+
+    mainButton.addEventListener("mouseenter", () => {
+      const x = Math.random() * (window.innerWidth - 200);
+      const y = Math.random() * (window.innerHeight - 100);
+      mainButton.style.position = "absolute";
+      mainButton.style.left = x + "px";
+      mainButton.style.top = y + "px";
+    });
+
+    mainButton.addEventListener("click", () => {
+      if (clickCount === 0) {
+        mainButton.textContent = "no seriously, why";
+        clickCount++;
+      } else if (clickCount === 1) {
+        mainButton.textContent = "i made this website to see who would click an obvious IP grabber and you all FAILED";
+        clickCount++;
+      }
+      else if (clickCount === 2){
+        mainButton.textContent = "chances are if you're here, I already have your address, but still...";
+        clickCount++;
+      }
+      else if (clickCount ===3){
+        mainButton.textContent = "not cool man, not cool";
+        clickCount++;
+      }
+      else if (clickCount === 4){
+        mainButton.textContent = "hey, why would you click me?";
+        clickCount++;
+      }
+      else if (clickCount === 5){
+        mainButton.textContent = "don't you have a life?";
+        clickCount++;
+      }
+    
+      else {
+        mainButton.textContent = "Im gonna touch you";
+      }
+    });
+
+    decoys.forEach(button => {
+      button.addEventListener("click", () => {
+        button.textContent = ":3";
+      });
+    });
+  </script>
+</body>
+</html>
